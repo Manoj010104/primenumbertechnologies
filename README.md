@@ -1,64 +1,40 @@
-Odisha RERA Projects Scraper
-This Python-based automation script extracts details of the first six “Projects Registered” on the Odisha RERA project list page. It is designed to handle dynamic content rendered via JavaScript and collect critical information from each project’s detail page.
+# Odisha RERA Projects Scraper
 
-🎯 Objective
-Extract the following fields from the first six project detail pages under the “Projects Registered” section on Odisha RERA:
+## Objective
 
-RERA Registration Number
+Extract the following fields from the first six project detail pages under the “Projects Registered” section on [Odisha RERA](https://rera.odisha.gov.in/projects/project-list):
 
-Project Name
+- **RERA Registration Number**
+- **Project Name**
+- **Promoter Name** (Company Name under the Promoter Details tab)
+- **Promoter Address** (Registered Office Address under the Promoter Details tab)
+- **GST Number**
 
-Promoter Name (Company Name under the Promoter Details tab)
+## Technical Overview
 
-Promoter Address (Registered Office Address under the Promoter Details tab)
+- The Odisha RERA portal is a Single Page Application (SPA) built with Angular; content loads dynamically through JavaScript.
+- The scraper uses **Selenium** with **undetected-chromedriver** for full page load and bot bypass.
+- The data is saved to `odisha_rera_projects.csv`.
 
-GST Number
+## Requirements
 
-⚙️ Technical Overview
-The Odisha RERA portal is a Single Page Application (SPA) developed with Angular. All content loads dynamically through JavaScript.
+Install dependencies with:
 
-To handle dynamic rendering, the scraper uses Selenium with undetected-chromedriver, effectively bypassing basic bot detection and ensuring full page load.
-
-After extracting the target data, results are stored in a structured CSV file: odisha_rera_projects.csv.
-
-📦 Requirements
-Install dependencies using:
-
-bash
-Copy
-Edit
+```bash
 pip install -r requirements.txt
-requirements.txt
+```
 
-Copy
-Edit
-undetected-chromedriver
-selenium
-beautifulsoup4
-pandas
-requests
-🚀 Usage
-Clone the repository and navigate to the project folder.
+## Usage
 
-Install dependencies:
-
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Run the scraper:
-
-bash
-Copy
-Edit
+```bash
 python rera_scraper.py
-Output:
-The file odisha_rera_projects.csv will be created in the same directory, containing all required project details.
+```
 
-📝 Notes
-If the CSV file is empty or partially filled, try disabling headless mode by removing or commenting out the --headless option in the script. This allows better visibility and may help bypass loading delays or detection mechanisms.
+## Output
 
-The script includes modular functions, meaningful comments, and clear error handling to ensure maintainability and extendability.
+The file `odisha_rera_projects.csv` will be created in the same directory.
 
-All extracted fields have been validated against the source pages to ensure accuracy and completeness.
+## Notes
 
+- If the CSV is empty or incomplete, disable headless mode by setting `headless=False` in the script for debugging.
+- The script includes robust waits and parsing for reliability.
